@@ -1,4 +1,4 @@
-#Écrivez une fonction Start-Notepad qui démarre Notepad.exe à l'aide de Start-Process et retourne un objet décrivant le processus dans le pipeline.
+﻿#Écrivez une fonction Start-Notepad qui démarre Notepad.exe à l'aide de Start-Process et retourne un objet décrivant le processus dans le pipeline.
 function Start-Notepad {
     Start-Process Notepad.exe
     return Get-Process -name Notepad
@@ -15,25 +15,14 @@ function Start-Notepad {
     return Get-Process -name Notepad
 }
 Start-Notepad
-
 #C) Réécrivez la fonction précédente et faites en sorte qu'elle plante si le fichier n'existe pas. Utilisez les validations de paramètres.
 function Start-Notepad {
     param(
-        [Parameter(Mandatory)]
-        [ValidateScript({
-            if (Test-Path $_) {
-                $true
-            }
-            else {
-                throw "Le fichier '$_' est introuvable."
-            }
-        })]
-        [string] $Path
+        [Parameter(Mandatory=$true)] [string] $filePath = "C:\Users\6288022\Documents\GitHub\travaux-qui-comptent-pas\Exercises 26-09\salut!.txt"
     )
-
-    Start-Process Notepad.exe -ArgumentList $Path
-    return Get-Process -Name Notepad
+    Start-Process Notepad.exe -ArgumentList "C:\Users\6288022\Documents\GitHub\travaux-qui-comptent-pas\Exercises 26-09\salut!.txt"
+    return Get-Process -name Notepad
 }
 
-Start-Notepad -Path "C:\Users\6288022\Documents\GitHub\travaux-qui-comptent-pas\Exercises 26-09\salut!.txt"
-
+Start-Notepad
+ 
