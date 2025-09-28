@@ -30,36 +30,6 @@
 .\Multiplier.ps1 -Termes 3,5,2,3,4,4,5
 
 
-# ===================== 2. DICTIONNAIRES ==============================
-
-# A) Dans une variable, créez la structure suivante :
-#    Nom        : Skywalker
-#    Prenom     : Luke
-#    Profession : Jedi
-
-
-# B) Faites une variable qui contient ces trois personnages :
-#    Skywalker Luke    Jedi
-#    Kenobi    Obi Wan Jedi
-#    Yoda      Minch   Jedi
-
-
-# C) Ajoutez Darth Vader à ce tableau :
-#    Vader Darth Sith
-
-
-# D) Dressez la liste de tous les Jedis seulement.
-
-
-# E) Faites un script qui produit un personnage et l'envoie
-#    dans le pipeline.
-#    Exemple :
-#      .\monscript.ps1 -Nom "Solo" -Prenom "Han" -Profession "Contrebandier"
-
-
-# F) Appelez ce script en utilisant la technique du Splatting.
-
-
 # ===================== 3. VALIDATION DES PARAMÈTRES ==================
 
 # Le script suivant est utilisé par les policiers lorsqu'ils interpellent
