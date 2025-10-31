@@ -14,13 +14,20 @@
 # - Désactiver la barre de progression
 # - Utiliser -UseBasicParsing si nécessaire
 # - Sauvegarder dans $env:temp
+$uri = "https://download.sysinternals.com/files/SysinternalsSuite.zip"
+$dest = "$env:TEMP"
+$zipPath = Join-Path -Path $dest -ChildPath "SysinternalsSuite.zip"
+$dossierSysinternals = Join-Path -Path $dest -ChildPath "SysinternalsSuite"
+
+Invoke-WebRequest -Uri $uri -OutFile $zipPath -UseBasicParsing
+Expand-Archive -Path $zipPath -DestinationPath $dossierSysinternals
 
 
 # Étape B : Extraire le fichier ZIP
 # - Utiliser Expand-Archive ou la méthode avec System.IO.Compression.ZipFile
 # - Extraire dans $HOME\Desktop\Outils
-
-
+Expand-Archive -Path $zipPath -DestinationPath $dossierSysinternals
+Move-Item -Path $dossierSysinternals -Destination $HOME\Desktop\Outils
 
 # ================================================================
 # 🌐 Exercice 2 – API publique (ip-api.com)
