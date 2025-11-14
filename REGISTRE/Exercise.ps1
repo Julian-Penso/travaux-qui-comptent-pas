@@ -17,10 +17,10 @@ a) Obtenir le chemin du papier peint (Wallpaper)
 -----------------------------------------------------------
 #>
 
-# $Path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\System"
-# $ValueName = "Wallpaper"
-# $WallpaperPath = Get-ItemPropertyValue -Path $Path -Name $ValueName
-# $WallpaperPath
+$Path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\System"
+$ValueName = "Wallpaper"
+$WallpaperPath = Get-ItemPropertyValue -Path $Path -Name $ValueName
+$WallpaperPath
 
 <#
 ATTENTION :
@@ -39,7 +39,7 @@ b) Vérifier si la clé HKCU:\SOFTWARE\Automatisation existe
 -----------------------------------------------------------
 #>
 
-# Test-Path -Path "HKCU:\SOFTWARE\Automatisation"
+Test-Path -Path "HKCU:\SOFTWARE\Automatisation"
 
 <#
 -----------------------------------------------------------
@@ -47,9 +47,9 @@ c) Créer la clé Automatisation sous HKCU:\SOFTWARE
 -----------------------------------------------------------
 #>
 
-# $Path = "HKCU:\SOFTWARE\Automatisation"
-# $NewKey = New-Item -Path $Path -Force
-# Test-Path -Path $Path
+$Path = "HKCU:\SOFTWARE\Automatisation"
+$NewKey = New-Item -Path $Path -Force
+Test-Path -Path $Path
 
 <#
 -----------------------------------------------------------
@@ -57,7 +57,7 @@ d) Créer une valeur "Papier peint" (String) contenant le chemin obtenu
 -----------------------------------------------------------
 #>
 
-# $NewKey | New-ItemProperty -Name "Papier peint" -PropertyType "String" -Value $WallpaperPath
+$NewKey | New-ItemProperty -Name "Papier peint" -PropertyType "String" -Value $WallpaperPath
 
 <#
 -----------------------------------------------------------
@@ -65,9 +65,9 @@ e) Vérifier si la valeur "Nombre" existe (booléen)
 -----------------------------------------------------------
 #>
 
-# $Path = "HKCU:\SOFTWARE\Automatisation"
-# $ValueName = "Nombre"
-# [bool](Get-ItemProperty -Path $Path -Name $ValueName -ErrorAction Ignore)
+$Path = "HKCU:\SOFTWARE\Automatisation"
+$ValueName = "Nombre"
+[bool](Get-ItemProperty -Path $Path -Name $ValueName -ErrorAction Ignore)
 
 <#
 -----------------------------------------------------------
@@ -75,13 +75,13 @@ f) Créer une valeur DWORD "Nombre" = 0
 -----------------------------------------------------------
 #>
 
-# $NewValueSplat = @{
-#     Path = "HKCU:\SOFTWARE\Automatisation"
-#     Name = "Nombre"
-#     PropertyType = "Dword"
-#     Value = 0
-# }
-# New-ItemProperty @NewValueSplat -Force | Out-Null
+ $NewValueSplat = @{
+     Path = "HKCU:\SOFTWARE\Automatisation"
+     Name = "Nombre"
+     PropertyType = "Dword"
+     Value = 0
+ }
+ New-ItemProperty @NewValueSplat -Force | Out-Null
 
 <#
 -----------------------------------------------------------
@@ -89,11 +89,11 @@ g) Obtenir la valeur Nombre dans une variable
 -----------------------------------------------------------
 #>
 
-# $NombreSplat = @{
-#     Path = "HKCU:\SOFTWARE\Automatisation"
-#     Name = "Nombre"
-# }
-# $Nombre = Get-ItemPropertyValue @NombreSplat
+$NombreSplat = @{
+    Path = "HKCU:\SOFTWARE\Automatisation"
+    Name = "Nombre"
+}
+$Nombre = Get-ItemPropertyValue @NombreSplat
 
 <#
 -----------------------------------------------------------
@@ -101,8 +101,8 @@ h) Incrémenter la valeur Nombre et l’enregistrer
 -----------------------------------------------------------
 #>
 
-# $Nombre++
-# Set-ItemProperty @NombreSplat -Value $Nombre
+$Nombre++
+Set-ItemProperty @NombreSplat -Value $Nombre
 
 <#
 -----------------------------------------------------------
@@ -110,7 +110,7 @@ i) Effacer la valeur Nombre
 -----------------------------------------------------------
 #>
 
-# Remove-ItemProperty @NombreSplat
+Remove-ItemProperty @NombreSplat
 
 <#
 -----------------------------------------------------------
