@@ -10,4 +10,3 @@ foreach($z in $a) {
     $b = $b + $z.Length
 }
 Write-Host $b
-
